@@ -19,3 +19,25 @@
                           );
                         };
        -> 이것도 진행되지 않음, 추후 해결할 경우 해결책 기입 요망
+       
+       저녁에 다시 도전하여 해결, 스프링에서 WebMvcConfigurer(config 파일)로 해결
+       
+                 package net.javaguides.springboot.config;
+
+          import org.springframework.context.annotation.Configuration;
+          import org.springframework.web.servlet.config.annotation.CorsRegistry;
+          import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+          @Configuration
+          public class WebConfig implements WebMvcConfigurer{
+
+            public static final String ALLOWED_METHOD_NAMES = "GET,HEAD,POST,PUT,DELETE,TRACE,OPTIONS,PATCH";
+
+              @Override
+              public void addCorsMappings(final CorsRegistry registry) {
+                  registry.addMapping("/**")
+                          .allowedMethods(ALLOWED_METHOD_NAMES.split(","));
+              }
+
+          }
+
