@@ -46,7 +46,7 @@ public class EmployeeController {
 		
 	}
 	// rest api업데이트, 정보 입력 전에 포스트맨을 통해 db에 삽입되는지 확인
-	@PutMapping("/employee/{id}")
+	@PutMapping("/employees/{id}")
 	public ResponseEntity<Employee> updateEmployee(@PathVariable Long id,@RequestBody Employee employeeDetails){
 		Employee employee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("id에 해당하는 직원이 존재하지 않습니다" + id));
 		
