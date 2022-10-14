@@ -22,6 +22,9 @@ class EmployeeService{
         console.log(employee, employeeId);
         return axios.put(EMPLOYEE_API_BASE_API + '/' + employeeId, employee);
     }
+    deleteEmployee(employeeId){
+        return axios.delete(EMPLOYEE_API_BASE_API+ '/' + employeeId);
+    }
 
 }
 

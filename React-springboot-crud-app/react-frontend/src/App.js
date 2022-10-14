@@ -6,6 +6,7 @@ import HeaderComponests from './components/HeaderComponests';
 import FooterComponests from './components/FooterComponests';
 import CreateEmployeeComponents from './components/CreateEmployeeComponents';
 import UpdateEmployeeComponent from './components/UpdateEmployeeComponent';
+import ViewEmployeeComponent from './components/ViewEmployeeComponent';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
               <Route path = "/" exact component={ListEmployeeComponents}></Route>
               <Route path = "/employees" component={ListEmployeeComponents}></Route>
               <Route path = "/add-employee" component={CreateEmployeeComponents}></Route>
+              <Route path = "/view-employee/:id" component={ViewEmployeeComponent}></Route>
               <Route path = "/update-employee/:id" component={UpdateEmployeeComponent}></Route> {/**:id는 변수 */}
             
           </Switch>

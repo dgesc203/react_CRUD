@@ -1,10 +1,13 @@
 package net.javaguides.springboot.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -59,5 +62,17 @@ public class EmployeeController {
 		return ResponseEntity.ok(updateEmployee);
 	}
  	
-	
+	//직원 삭제
+	@DeleteMapping("/employees/{id}")
+		//아래 <<>> 확인해야 할 것                               PathVariable 확인
+	public ResponseEntity<Map<String, Boolean>> deleteEmployee(@PathVariable Long id){
+		Employee employee = employeeRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("해당하는 직원이 존재하지 않습니다" + id));
+		
+		employeeRepository.delete(employee);
+		Map<String, Boolean> response = new HashMap<>();
+		response.put("삭제 완료", Boolean.TRUE);
+		return ResponseEntity.ok(response);
+				//<ResponseEntity 확인>
+	}
 }
